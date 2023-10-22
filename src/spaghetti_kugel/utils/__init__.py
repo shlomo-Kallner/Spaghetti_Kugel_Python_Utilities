@@ -1,8 +1,6 @@
 
-from spaghetti_kugel.utils.__about__ import (
-    VERSION
-)
 
+VERSION = "0.1.0"
 
 __all__ = (
     "VERSION",
