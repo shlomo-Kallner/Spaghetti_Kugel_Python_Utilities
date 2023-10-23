@@ -3,6 +3,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+bump4version = {call = "bump4version.cli:main()"}
+bump2version = {call = "bump4version.cli:main()"}
+bumpversion = {call = "bump4version.cli:main()"}
+
 [packages]
 parglare = "*"
 pydantic = {extras = ["dotenv", "email"], version = "<2.0,>=1.0"}
@@ -29,6 +34,7 @@ build = "*"
 twine = "*"
 pipenv = "*"
 debugpy = "*"
+bump4version = "*"
 
 [requires]
 python_version = "3.10"

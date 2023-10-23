@@ -10,6 +10,7 @@ authors = [
 ]
 description = "The Utils Package of the Spaghetti Kugel Project."
 requires-python = ">=3.10"
+license = {file = "LICENSE"}
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3",
@@ -21,13 +22,27 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://github.com/shlomo-Kallner/Spaghetti_Kugel_Python_Utilities"
+"Repository" = "https://github.com/shlomo-Kallner/Spaghetti_Kugel_Python_Utilities"
 "Bug Tracker" = "https://github.com/shlomo-Kallner/Spaghetti_Kugel_Python_Utilities/issues"
+# "Documentation" = "https://readthedocs.org"
+
+## CLI Script Entry-Points
+# [project.scripts]
+# spam-cli = "spam:main_cli"
+
+## GUI Script Entry-Points
+# [project.gui-scripts]
+# spam-gui = "spam:main_gui"
+
+## Library/Plugin Entry-Points
+# [project.entry-points."spam.magical"]
+# tomatoes = "spam:main_tomatoes"
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
 include = ["spaghetti_kugel.utils*"]  # package names should match these glob patterns (["*"] by default)
 exclude = ["spaghetti_kugel.utils.tests*"]  # exclude packages matching these glob patterns (empty by default)
-namespaces = true  # to enable scanning PEP 420 namespaces (true by default)
+namespaces = true  # enable scanning PEP 420 namespaces (enabled by default)
 
 [tool.setuptools.dynamic]
 version = {attr = "spaghetti_kugel.utils.VERSION"}
@@ -36,8 +51,5 @@ dependencies = {file = ["requirements/requirements.txt"] }
 
 [tool.setuptools.dynamic.optional-dependencies]
 dev = {file = ["requirements/dev.txt"]}
-
-docs = [
-    "myst-parser"
-]
+docs = {file = ["requirements/docs.txt"]}
     
