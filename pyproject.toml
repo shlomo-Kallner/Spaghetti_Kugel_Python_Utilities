@@ -35,7 +35,6 @@ readme = {file = ["README.md", "USAGE.md", "CHANGELOG.md", "LICENSE"]}
 dependencies = {file = ["requirements/requirements.txt"] }
 
 [tool.setuptools.dynamic.optional-dependencies]
-# base = {file = ["requirements/base.txt"]}
 dev = {file = ["requirements/dev.txt"]}
 
 docs = [
