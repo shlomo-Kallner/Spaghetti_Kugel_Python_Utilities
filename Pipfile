@@ -18,11 +18,7 @@ cytoolz = "*"
 [dev-packages]
 pytest = "*"
 tox = "*"
-
-[requires]
-python_version = "3.10"
-
-[base]
+tox-pipenv = "*"
 pip = "*"
 setuptools = "*"
 setuptools-scm = "*"
@@ -30,3 +26,7 @@ wheel = "*"
 build = "*"
 twine = "*"
 pipenv = "*"
+
+[requires]
+python_version = "3.10"
+

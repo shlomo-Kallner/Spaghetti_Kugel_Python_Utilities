@@ -1,3 +1,44 @@
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "spaghetti_kugel_utils"
+dynamic = ["version", "readme", "dependencies", "optional-dependencies"]
+authors = [
+  { name="Shlomo Kallner", email="shlomo.kallner@gmail.com" },
+]
+description = "The Utils Package of the Spaghetti Kugel Project."
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/shlomo-Kallner/Spaghetti_Kugel_Python_Utilities"
+"Bug Tracker" = "https://github.com/shlomo-Kallner/Spaghetti_Kugel_Python_Utilities/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+include = ["spaghetti_kugel.utils*"]  # package names should match these glob patterns (["*"] by default)
+exclude = ["spaghetti_kugel.utils.tests*"]  # exclude packages matching these glob patterns (empty by default)
+namespaces = true  # to enable scanning PEP 420 namespaces (true by default)
+
+[tool.setuptools.dynamic]
+version = {attr = "spaghetti_kugel.utils.VERSION"}
+readme = {file = ["README.md", "USAGE.md", "CHANGELOG.md", "LICENSE"]}
+dependencies = {file = ["requirements/requirements.txt"] }
+
+[tool.setuptools.dynamic.optional-dependencies]
+# base = {file = ["requirements/base.txt"]}
+dev = {file = ["requirements/dev.txt"]}
+
+docs = [
+    "myst-parser"
+]
+    
