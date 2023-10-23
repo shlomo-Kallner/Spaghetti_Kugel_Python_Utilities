@@ -7,6 +7,9 @@ name = "pypi"
 bump4version = {call = "bump4version.cli:main()"}
 bump2version = {call = "bump4version.cli:main()"}
 bumpversion = {call = "bump4version.cli:main()"}
+bump_major = {call = "bump4version.cli:main(('major',))"}
+bump_minor = {call = "bump4version.cli:main(('minor',))"}
+bump_patch = {call = "bump4version.cli:main(('patch',))"}
 
 [packages]
 parglare = "*"
