@@ -204,10 +204,10 @@ class _NotFoundSingleton:
 _notFound = _NotFoundSingleton()
 
 #TODO: Complete this Method!!!
-def getSingle(path: SequenceType[PathKeyType], default: Union[Any,None, _NotFoundSingleton] = _notFound) -> Any:
+def getSingle(obj: Any, path: SequenceType[PathKeyType], default: Union[Any,None, _NotFoundSingleton] = _notFound) -> Any:
     pass
 
 #TODO: Complete this Method!!!
-def getMultiple(path: SequenceType[SequenceType[PathKeyType]]) -> list[Any]:
+def getMultiple(obj: Any, path: SequenceType[SequenceType[PathKeyType]]) -> list[Any]:
     return []
 
