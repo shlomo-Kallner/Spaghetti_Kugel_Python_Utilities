@@ -198,16 +198,3 @@ class Getter(Generic[SourceObjectType, PathKeyType, DestObjectType, DestObjectDa
                     return ret
             
 
-class _NotFoundSingleton:
-    pass
-
-_notFound = _NotFoundSingleton()
-
-#TODO: Complete this Method!!!
-def getSingle(obj: Any, path: SequenceType[PathKeyType], default: Union[Any,None, _NotFoundSingleton] = _notFound) -> Any:
-    pass
-
-#TODO: Complete this Method!!!
-def getMultiple(obj: Any, path: SequenceType[SequenceType[PathKeyType]]) -> list[Any]:
-    return []
-
