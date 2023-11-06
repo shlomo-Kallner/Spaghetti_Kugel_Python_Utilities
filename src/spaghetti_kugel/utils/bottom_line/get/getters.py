@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
 
 
-from typing import Any, Mapping, Union, Optional
+from typing import (
+    Any, 
+    Mapping, 
+    Union, 
+    Optional
+)
+from collections.abc import (
+    Mapping as MappingABC
+)
+
 
 from spaghetti_kugel.utils.bottom_line.get.abc import (
     Getter as GetterABC,
@@ -160,18 +169,12 @@ class StrObjectAttrWithDefaultGetter(StrObjectAttrGetter):
 class StrMappingKeyGetter(StrPathKeyTypeGetterABC[Mapping[str, Any], Any, Any]):
     
     @classmethod
-    def validate_source_object_type(cls, obj: SourceObjectType) -> bool:
+    def validate_source_object_type(cls, obj: Any) -> bool:
         """
             validate_source_object_type 
             
             Validate the Source Object's Type 
             for Getter SubType retrival Compatibility.
-
-            NOTE 
-            ----
-            As the `SourceObjectType` is `Any`,
-            this method is a No-Op and Always
-            returns `True`.
 
             Parameters
             ----------
@@ -184,9 +187,9 @@ class StrMappingKeyGetter(StrPathKeyTypeGetterABC[Mapping[str, Any], Any, Any]):
                 `True` if `obj`'s Type is Valid and `False` otherwise.
         """        
 
-        return True
+        return isinstance(obj, MappingABC)
 
-    def get_from_source_object(self, obj: SourceObjectType) -> DestObjectDataType:
+    def get_from_source_object(self, obj: Mapping[str, Any]) -> Any:
         """
             get_from_source_object 
 
@@ -206,4 +209,4 @@ class StrMappingKeyGetter(StrPathKeyTypeGetterABC[Mapping[str, Any], Any, Any]):
                 _description_
         """        
         
-        return getattr(obj, self.path_key)
+        return obj.get(self.path_key)
