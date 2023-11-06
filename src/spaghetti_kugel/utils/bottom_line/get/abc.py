@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from collections.abc import (
     Sequence as SequenceABC, 
     Set as SetABC, 
@@ -22,28 +22,25 @@ from typing import (
 )
 
 
+
+from spaghetti_kugel.utils.bottom_line.abc.object_path import (
+    PathKeyType,
+    PathAccessor,
+    NotFoundException
+)
+
+
+
+# PathKeyType = TypeVar('PathKeyType', bound=Union[str, int, slice, 'Getter'])
 SourceObjectType = TypeVar('SourceObjectType')
-PathKeyType = TypeVar('PathKeyType', bound=Union[str, int, 'Getter'])
 DestObjectType = TypeVar('DestObjectType')
 DestObjectDataType = TypeVar('DestObjectDataType')
 
 
-class Getter(Generic[SourceObjectType, PathKeyType, DestObjectType, DestObjectDataType],ABC):
+class Getter(Generic[SourceObjectType, PathKeyType, DestObjectType, DestObjectDataType], PathAccessor[PathKeyType]):
 
     def __init__(self, path_key: PathKeyType) -> None:
-        self._path_key : PathKeyType = path_key
-
-    @property
-    def path_key(self) -> PathKeyType:
-        return self._path_key
-
-    @path_key.setter
-    def path_key(self, _: PathKeyType) -> None:
-        raise AttributeError("path_key is READ-ONLY!!", name="path_key", obj=self)
-
-    @path_key.deleter
-    def path_key(self) -> None:
-        raise AttributeError("path_key is READ-ONLY!!", name="path_key", obj=self)
+        super().__init__(path_key)
 
     @classmethod
     @abstractmethod
@@ -65,46 +62,6 @@ class Getter(Generic[SourceObjectType, PathKeyType, DestObjectType, DestObjectDa
                 `True` if `obj`'s Type is Valid and `False` otherwise.
         """        
         pass
-
-    @classmethod
-    @abstractmethod
-    def validate_path_key_type(cls, path_key: PathKeyType) -> bool:
-        """
-            validate_path_key_type 
-            
-            Validate the Path_Key's Type 
-            for Getter SubType retrival Compatibility.
-
-            Parameters
-            ----------
-            path_key : PathKeyType
-                The Path_Key Object to validate it's type.
-
-            Returns
-            -------
-            bool
-                `True` if `path_key`'s Type is Valid and `False` otherwise.
-        """        
-        pass
-
-    @classmethod
-    def parse_path_key(cls, path_key: PathKeyType) -> PathKeyType:
-        """
-            parse_path_key _summary_
-
-            #TODO Complete this DocString!!!
-
-            Parameters
-            ----------
-            path_key : PathKeyType
-                _description_
-
-            Returns
-            -------
-            PathKeyType
-                _description_
-        """        
-        return cast(PathKeyType, path_key)
 
     @abstractmethod
     def get_from_source_object(self, obj: SourceObjectType) -> DestObjectDataType:

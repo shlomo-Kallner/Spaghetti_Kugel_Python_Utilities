@@ -16,7 +16,12 @@ from typing import (
     Mapping as MappingType
 )
 
-from spaghetti_kugel.utils.bottom_line.get.abc import PathKeyType
+# from spaghetti_kugel.utils.bottom_line.get.abc import PathKeyType
+
+from spaghetti_kugel.utils.bottom_line.abc.object_path import (
+    PathKeyType,
+    # PathAccessor
+)
 
 class NotFoundException(Exception):
     
