@@ -4,7 +4,8 @@ from abc import ABC, abstractmethod
 from collections.abc import (
     Sequence as SequenceABC, 
     Set as SetABC, 
-    Mapping as MappingABC
+    Mapping as MappingABC,
+    Hashable as HashableABC
 )
 from typing import (
     Any, 
@@ -22,7 +23,7 @@ from typing import (
 )
 
 
-PathKeyType = TypeVar('PathKeyType', bound=Union[str, int, slice, 'PathAccessor'])
+PathKeyType = TypeVar('PathKeyType', bound=Union[str, int, slice, HashableABC, 'PathAccessor'])
 
 class PathAccessor(Generic[PathKeyType], ABC):
 
